@@ -9,8 +9,14 @@ class CelestialBody:
         self.radius = radius
         self.gravity = Gravity(x, y, gravity, gravity_radius)
 
+        self.color = (200, 30, 20)
+
     def draw(self, screen, color):
         pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
+        self.gravity.draw(screen, color)
+    
+    def update(self):
+        return
 
 
 class Gravity:
