@@ -3,6 +3,7 @@ import numpy as np
 
 from entities.celestial import CelestialBody
 from entities.bird import Bird
+from entities.goal import Goal
 
 pygame.init()
 
@@ -17,6 +18,7 @@ FPS = 60  # Frames per Second
 BLACK = (0, 0, 0)
 COR_PERSONAGEM = (30, 200, 20)
 COR_CORPO_CELESTE = (200, 30, 20)
+COR_GOAL = (20, 30, 200)
 
 # Inicializar posicoes
 s0 = np.array([50,200])
@@ -25,6 +27,7 @@ s0_corpo_celeste = np.array([600,200])
 
 bird = Bird(s0[0], s0[1], 0, 0, 5)
 corpo_celeste = CelestialBody(x=s0_corpo_celeste[0], y=s0_corpo_celeste[1], radius=10, gravity=2500, gravity_radius=100)
+goal = Goal(750, 200, 20)
 
 
 rodando = True
@@ -49,6 +52,8 @@ while rodando:
         d = corpo_celeste.pos - bird.pos
         d1 = d/np.linalg.norm(d)
         bird.acc = d1 * corpo_celeste.gravity.gravity/np.linalg.norm(d)**2
+    elif (bird.crash(goal)):
+        rodando = False
     else:
         bird.acc = np.array([0,0])
 
@@ -62,6 +67,7 @@ while rodando:
     corpo_celeste.draw(screen, COR_CORPO_CELESTE)
     bird.draw(screen, COR_PERSONAGEM)
     corpo_celeste.gravity.draw(screen, COR_CORPO_CELESTE)
+    goal.draw(screen, COR_GOAL)
 
     # Update!
     pygame.display.update()
