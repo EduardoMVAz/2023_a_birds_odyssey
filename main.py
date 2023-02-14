@@ -35,8 +35,8 @@ class Game():
 
         # Terminar tela
         quit()
-    
-
+   
+   
     def quit():
         pygame.quit()
 
