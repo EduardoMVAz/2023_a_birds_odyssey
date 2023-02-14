@@ -2,7 +2,7 @@ import pygame
 import numpy as np
 
 from entities.celestial import CelestialBody
-from entities.rock import Bird
+from entities.bird import Bird
 
 pygame.init()
 
@@ -23,8 +23,8 @@ s0 = np.array([50,200])
 v0 = np.array([15, -15]) * 0.1
 s0_corpo_celeste = np.array([600,200])
 
-pedra = Bird(s0[0], s0[1], 0, 0, 5)
-corpo_celeste = CelestialBody(s0_corpo_celeste[0], s0_corpo_celeste[1], 10, 0.1, 100)
+bird = Bird(s0[0], s0[1], 0, 0, 5)
+corpo_celeste = CelestialBody(x=s0_corpo_celeste[0], y=s0_corpo_celeste[1], radius=10, gravity=2500, gravity_radius=100)
 
 
 rodando = True
@@ -34,33 +34,34 @@ while rodando:
         if event.type == pygame.QUIT:
             rodando = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            d = pygame.mouse.get_pos() - pedra.pos
-            pedra.vel = d/np.linalg.norm(d) * 5
+            d = pygame.mouse.get_pos() - bird.pos
+            bird.vel = d/np.linalg.norm(d) * 2
 
 
-    if pedra.pos[0]<pedra.radius or pedra.pos[0]>WIDTH - pedra.radius or pedra.pos[1]<pedra.radius or pedra.pos[1]>HEIGHT - pedra.radius or pedra.crash(corpo_celeste): # Se eu chegar ao limite da tela, reinicio a posição do personagem
-        pedra.pos = s0
-        pedra.vel = 0
+    if bird.pos[0]<bird.radius or bird.pos[0]>WIDTH - bird.radius or bird.pos[1]<bird.radius or bird.pos[1]>HEIGHT - bird.radius or bird.crash(corpo_celeste): # Se eu chegar ao limite da tela, reinicio a posição do personagem
+        bird.pos = s0
+        bird.vel = 0
 
     # Controlar frame rate
     clock.tick(FPS)
     
-    if pedra.crash(corpo_celeste.gravity):
-        d = pedra.pos - corpo_celeste.pos
-        d = d/np.linalg.norm(d)
-        pedra.acc = corpo_celeste.gravity.gravity/d**2
+    if bird.crash(corpo_celeste.gravity):
+        d = corpo_celeste.pos - bird.pos
+        d1 = d/np.linalg.norm(d)
+        bird.acc = d1 * corpo_celeste.gravity.gravity/np.linalg.norm(d)**2
     else:
-        pedra.acc = np.array([0,0])
+        bird.acc = np.array([0,0])
 
     # Processar posicoes
-    pedra.update()
+    bird.update()
 
     # Desenhar fundo
     screen.fill(BLACK)
 
     # Desenhar personagem
-    pygame.draw.circle(screen, COR_CORPO_CELESTE, (corpo_celeste.pos[0], corpo_celeste.pos[1]), corpo_celeste.radius)
-    pygame.draw.circle(screen, COR_PERSONAGEM, (pedra.pos[0], pedra.pos[1]), pedra.radius)
+    corpo_celeste.draw(screen, COR_CORPO_CELESTE)
+    bird.draw(screen, COR_PERSONAGEM)
+    corpo_celeste.gravity.draw(screen, COR_CORPO_CELESTE)
 
     # Update!
     pygame.display.update()

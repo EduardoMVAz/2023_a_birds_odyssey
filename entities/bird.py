@@ -1,4 +1,5 @@
 import numpy as np
+import pygame
 
 class Bird:
     def __init__(self, x, y, vx, vy, radius):
@@ -16,3 +17,6 @@ class Bird:
         if d < self.radius + o.radius:
             return True
         return False
+    
+    def draw(self, screen, color):
+        pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
