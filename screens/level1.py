@@ -5,9 +5,6 @@ from entities.celestial import CelestialBody
 from entities.bird import Bird
 from entities.goal import Goal
 
-from screens.main_menu import MainMenu
-
-
 class Level1:
 
     WIDTH = 800
@@ -20,6 +17,8 @@ class Level1:
             "Goal" : Goal(750, 200, 20)
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
+
+        self.name = "Level1"
 
 
     def process_events(self):
@@ -45,9 +44,10 @@ class Level1:
             self.entities["Bird"].reset()
         
         if self.entities["Bird"].crash(self.entities["Goal"]):
-            return MainMenu()
+            self.entities["Bird"].reset()
+            return "MainMenu"
 
-        return self
+        return self.name
 
 
     def draw(self, screen):

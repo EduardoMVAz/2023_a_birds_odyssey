@@ -3,14 +3,15 @@ import numpy as np
 
 class MainMenu:
     def __init__(self):
-        pygame.font.init()
-        font = pygame.font.Font()
+        
         self.entities = {
             "START": pygame.Rect(100, 50, 200, 75), 
             "OPTIONS": pygame.Rect(100, 200, 200, 75), 
             "CREDITS": pygame.Rect(100, 350, 200, 75)
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
+
+        self.name = "MainMenu"
 
     def draw(self, screen):
 
@@ -28,15 +29,15 @@ class MainMenu:
                 pygame.quit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 return self.update_entities()
-        return self
+        return self.name
 
     def update_entities(self):
         p = pygame.mouse.get_pos()
         if self.entities["START"].collidepoint(p):
-            return "placeholder_level_1"
+            return "Level1"
         elif self.entities["OPTIONS"].collidepoint(p):
             return "placeholder_options"
         elif self.entities["CREDITS"].collidepoint(p):
             return "placeholder_credits"
-        return self
+        return self.name
 

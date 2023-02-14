@@ -18,15 +18,22 @@ class Game():
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         self.clock = pygame.time.Clock()
 
+        self.telas = {
+            "MainMenu" : MainMenu(),
+            "Level1" : Level1()
+        }
+
 
     def play(self):
         
-        tela = Level1()
+        tela = self.telas["MainMenu"]
 
         rodando = True
         while rodando:
             # Capturar eventos
-            tela = tela.process_events()
+            strtela = tela.process_events()
+
+            tela = self.telas[strtela]
 
             # Controlar frame rate
             self.clock.tick(self.FPS)
