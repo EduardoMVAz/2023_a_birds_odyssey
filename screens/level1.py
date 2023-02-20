@@ -1,14 +1,13 @@
 import pygame
 import numpy as np
 
+from screens.abstract_level import AbstractLevel
+
 from entities.celestial import CelestialBody
 from entities.bird import Bird
 from entities.goal import Goal
 
-class Level1:
-
-    WIDTH = 800
-    HEIGHT = 450
+class Level1(AbstractLevel):
 
     def __init__(self):
         self.entities = {
@@ -24,7 +23,7 @@ class Level1:
     def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
+                return "Quit"
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.entities["Bird"].shoot()
         

@@ -33,12 +33,15 @@ class Game():
             # Capturar eventos
             strtela = tela.process_events()
 
-            tela = self.telas[strtela]
+            if strtela != "Quit":
+                tela = self.telas[strtela]
 
-            # Controlar frame rate
-            self.clock.tick(self.FPS)
+                # Controlar frame rate
+                self.clock.tick(self.FPS)
 
-            tela.draw(self.screen)
+                tela.draw(self.screen)
+            else:
+                rodando = False
 
         # Terminar tela
         quit()

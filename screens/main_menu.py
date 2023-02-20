@@ -1,7 +1,10 @@
 import pygame
 import numpy as np
 
-class MainMenu:
+from screens.abstract_level import AbstractLevel
+
+class MainMenu(AbstractLevel):
+
     def __init__(self):
         
         self.entities = {
@@ -26,7 +29,7 @@ class MainMenu:
     def process_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                pygame.quit()
+                return "Quit"
             if event.type == pygame.MOUSEBUTTONDOWN:
                 return self.update_entities()
         return self.name
