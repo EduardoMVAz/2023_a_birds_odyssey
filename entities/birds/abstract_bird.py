@@ -1,20 +1,14 @@
-import numpy as np
-import pygame
+from abc import abstractmethod
 
-class Bird:
+import pygame
+import numpy as np
+
+
+class AbstractBird():
 
     WIDTH = 800
     HEIGHT = 450
 
-    def __init__(self, x, y, vx, vy, radius):
-        self.s0 = np.array([x, y])
-        self.pos = np.array([x, y])
-        self.vel = np.array([vx, vy])
-        self.acc = np.array([0, 0])
-        self.radius = radius
-
-        self.color = (30, 200, 20)
-    
     def update(self):
         self.vel = self.vel + self.acc * 0.1
         self.pos = self.pos + self.vel
@@ -39,3 +33,7 @@ class Bird:
     def shoot(self):
         d = pygame.mouse.get_pos() - self.pos
         self.vel = d/np.linalg.norm(d) * 2
+
+    @abstractmethod
+    def ability(self):
+        pass

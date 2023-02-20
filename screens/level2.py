@@ -7,7 +7,7 @@ from entities.celestial import CelestialBody
 from entities.birds.basic_bird import BasicBird
 from entities.goal import Goal
 
-class Level1(AbstractLevel):
+class Level2(AbstractLevel):
 
     def __init__(self):
         self.entities = {
@@ -15,7 +15,8 @@ class Level1(AbstractLevel):
                 BasicBird(50, 200, 0, 0, 5),
             ],
             "Celestial Bodies" : [
-                CelestialBody(x=600, y=200, radius=10, gravity=2500, gravity_radius=100)
+                CelestialBody(x=400, y=110, radius=10, gravity=2500, gravity_radius=100),
+                CelestialBody(x=400, y=290, radius=10, gravity=2500, gravity_radius=100),
             ],
             "Goals" : [
                 Goal(750, 200, 20)
@@ -23,7 +24,7 @@ class Level1(AbstractLevel):
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
 
-        self.name = "Level1"
+        self.name = "Level2"
 
         self.current_bird = 0
 
@@ -60,7 +61,7 @@ class Level1(AbstractLevel):
         for goals in self.entities["Goals"]:
             if self.entities["Birds"][self.current_bird].crash(goals):
                 self.entities["Birds"][self.current_bird].reset()
-                return "Level2"
+                return "MainMenu"
 
         return self.name
 

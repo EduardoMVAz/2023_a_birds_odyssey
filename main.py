@@ -3,6 +3,7 @@ import numpy as np
 
 from screens.main_menu import MainMenu
 from screens.level1 import Level1
+from screens.level2 import Level2
 
 pygame.init()
 
@@ -20,7 +21,8 @@ class Game():
 
         self.telas = {
             "MainMenu" : MainMenu(),
-            "Level1" : Level1()
+            "Level1" : Level1(),
+            "Level2" : Level2(),
         }
 
 
