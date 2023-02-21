@@ -3,5 +3,5 @@
 
 Developers:
 
-João Lucas de Moraes Barros Cadorniga (https://github.com/JoaoLucasMBC)
+João Lucas de Moraes Barros Cadorniga (https://github.com/JoaoLucasMBC),
 Eduardo Mendes Vaz (https://github.com/EduardoMVAz)
