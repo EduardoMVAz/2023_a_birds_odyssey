@@ -5,6 +5,7 @@ from screens.abstract_level import AbstractLevel
 
 from entities.celestial import CelestialBody
 from entities.birds.basic_bird import BasicBird
+from entities.birds.redirect_bird import RedirectBird
 from entities.goal import Goal
 
 class Level2(AbstractLevel):
@@ -12,6 +13,7 @@ class Level2(AbstractLevel):
     def __init__(self):
         self.birds = [
             BasicBird(50, 200, 0, 0, 5),
+            RedirectBird(50, 200, 0, 0, 5),
         ]
 
         self.entities = {

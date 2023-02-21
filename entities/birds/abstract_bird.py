@@ -9,6 +9,16 @@ class AbstractBird():
     WIDTH = 800
     HEIGHT = 450
 
+    def __init__(self, x, y, vx, vy, radius):
+        self.s0 = np.array([x, y])
+        self.pos = np.array([x, y])
+        self.vel = np.array([vx, vy])
+        self.acc = np.array([0, 0])
+        self.radius = radius
+
+        self.used_ability = False
+        self.has_shot = False
+
     def update(self):
         self.vel = self.vel + self.acc * 0.1
         self.pos = self.pos + self.vel
