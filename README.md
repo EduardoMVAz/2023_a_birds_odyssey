@@ -1,6 +1,6 @@
-# APS_Angry_Birds
-Desenvolvimento da APS de Algebra Linear.
+# 2023: A Birds Odyssey
+## Game Development and Programming Logic Project, Utilizing Pygame and Linear Algebra Basics.
 
-Participantes:
-    - João Lucas de Moraes Barros Cadorniga
-    - Eduardo Mendes Vaz
+Developers:
+    - João Lucas de Moraes Barros Cadorniga (https://github.com/JoaoLucasMBC)
+    - Eduardo Mendes Vaz (https://github.com/EduardoMVAz)
