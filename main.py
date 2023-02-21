@@ -1,9 +1,9 @@
 import pygame
 import numpy as np
 
-from screens.main_menu import MainMenu
-from screens.level1 import Level1
-from screens.level2 import Level2
+from screens.additional.main_menu import MainMenu
+from screens.levels.level1 import Level1
+from screens.levels.level2 import Level2
 
 pygame.init()
 
@@ -36,6 +36,9 @@ class Game():
             strtela = tela.process_events()
 
             if strtela != "Quit":
+                if strtela != tela.name:
+                    tela.reset()
+
                 tela = self.telas[strtela]
 
                 # Controlar frame rate

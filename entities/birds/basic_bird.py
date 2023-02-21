@@ -13,8 +13,13 @@ class BasicBird(AbstractBird):
         self.acc = np.array([0, 0])
         self.radius = radius
 
+        self.used_ability = False
+        self.has_shot = False
+
         self.color = (30, 200, 20)
     
     def ability(self):
         self.vel = self.vel * 2
         self.acc = 0
+
+        self.used_ability = True

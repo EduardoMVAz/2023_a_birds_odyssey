@@ -16,3 +16,7 @@ class AbstractLevel():
     @abstractmethod
     def draw(self, screen):
         pass
+
+    @abstractmethod
+    def reset(self):
+        pass
