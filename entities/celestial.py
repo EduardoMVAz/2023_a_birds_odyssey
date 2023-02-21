@@ -8,12 +8,14 @@ class CelestialBody:
         self.acc = np.array([0, 0])
         self.radius = radius
         self.gravity = Gravity(x, y, gravity, gravity_radius)
+        self.status = True
 
         self.color = (200, 30, 20)
 
     def draw(self, screen, color):
-        pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
-        self.gravity.draw(screen, color)
+        if self.status:
+            pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
+            self.gravity.draw(screen, color)
     
     def update(self):
         return
@@ -26,4 +28,5 @@ class Gravity:
         self.gravity = gravity
 
     def draw(self, screen, color):
-        pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius, width=1)
+        if self.status:
+            pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius, width=1)
