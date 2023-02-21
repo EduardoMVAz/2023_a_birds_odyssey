@@ -12,7 +12,7 @@ class AbstractBird():
     def update(self):
         self.vel = self.vel + self.acc * 0.1
         self.pos = self.pos + self.vel
-        self.acc = 0
+        self.acc = np.array([0, 0])
 
         if self.pos[0]<self.radius or self.pos[0]>self.WIDTH - self.radius or self.pos[1]<self.radius or self.pos[1]>self.HEIGHT - self.radius: # Se eu chegar ao limite da tela, reinicio a posição do personagem
             self.reset()
@@ -25,7 +25,9 @@ class AbstractBird():
 
     def reset(self):
         self.pos = self.s0
-        self.vel = 0
+        self.vel = np.array([0, 0])
+        self.acc = np.array([0, 0])
+        
     
     def draw(self, screen, color):
         pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
