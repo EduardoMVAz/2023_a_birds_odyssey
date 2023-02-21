@@ -44,7 +44,7 @@ class AbstractLevel():
                 e.update()
         
         self.birds[self.current_bird].update()
-        
+
         for celestial_body in self.entities["Celestial Bodies"]:
             if self.birds[self.current_bird].crash(celestial_body.gravity):
                 d = celestial_body.pos - self.birds[self.current_bird].pos
@@ -55,6 +55,12 @@ class AbstractLevel():
                 self.birds[self.current_bird].reset()
                 if self.update_bird_count():
                     return self.MAIN_MENU
+                
+            if self.birds[self.current_bird].name == "GunBird":
+                if self.birds[self.current_bird].bullet.crash(celestial_body):
+                    self.birds[self.current_bird].bullet.reset()
+                    del self.entities["Celestial Bodies"][self.entities["Celestial Bodies"].index(celestial_body)]
+
         
         for goals in self.entities["Goals"]:
             if self.birds[self.current_bird].crash(goals):

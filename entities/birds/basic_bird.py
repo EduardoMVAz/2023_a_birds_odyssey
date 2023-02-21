@@ -9,6 +9,7 @@ class BasicBird(AbstractBird):
     def __init__(self, x, y, vx, vy, radius):
         super().__init__(x, y, vx, vy, radius)
 
+        self.name = self.BASIC_BIRD
         self.color = (30, 200, 20)
     
     def ability(self):

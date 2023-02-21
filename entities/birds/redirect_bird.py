@@ -9,6 +9,7 @@ class RedirectBird(AbstractBird):
     def __init__(self, x, y, vx, vy, radius):
         super().__init__(x, y, vx, vy, radius)
 
+        self.name = self.REDIRECT_BIRD
         self.color = (0, 255, 255)
     
     def ability(self):

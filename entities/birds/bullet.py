@@ -7,15 +7,13 @@ class Bullet:
         self.s0 = np.array([x, y])
         self.pos = np.array([x, y])
         self.vel = np.array([vx, vy])
-        self.acc = np.array([0, 0])
         self.radius = radius
+        self.hit = False
 
         self.color = (0, 255, 255)
     
     def update(self):
-        self.vel = self.vel + self.acc * 0.1
-        self.pos = self.pos + self.vel
-        self.acc = np.array([0, 0])
+        self.pos = self.pos + self.vel * 2
 
     def crash(self, o):
         d = np.sqrt((self.pos[0] - o.pos[0])**2 + (self.pos[1] - o.pos[1])**2)
@@ -23,5 +21,9 @@ class Bullet:
             return True
         return False
     
-    def draw(self, screen, color):
-        pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
+    def reset(self):
+        self.vel = np.array([0,0])
+        self.hit = True
+    
+    def draw(self, screen):
+        pygame.draw.circle(screen, self.color, (self.pos[0], self.pos[1]), self.radius)

@@ -9,6 +9,10 @@ class AbstractBird():
     WIDTH = 800
     HEIGHT = 450
 
+    BASIC_BIRD = "BasicBird"
+    REDIRECT_BIRD = "RedirectBird"
+    GUN_BIRD = "GunBird"
+
     def __init__(self, x, y, vx, vy, radius):
         self.s0 = np.array([x, y])
         self.pos = np.array([x, y])
