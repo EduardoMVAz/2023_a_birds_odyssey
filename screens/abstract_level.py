@@ -81,7 +81,7 @@ class AbstractLevel():
         # Desenhar personagem
         for group in self.entities.values():
             for entity in group:
-                entity.draw(screen, entity.color)
+                entity.draw(screen)
         
         # Desenhar passáro
         if self.current_bird < len(self.birds):

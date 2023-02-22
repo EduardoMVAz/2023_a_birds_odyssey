@@ -8,8 +8,8 @@ class Goal:
 
         self.color = (20, 30, 200)
     
-    def draw(self, screen, color):
-        pygame.draw.circle(screen, color, (self.pos[0], self.pos[1]), self.radius)
+    def draw(self, screen):
+        pygame.draw.circle(screen, self.color, (self.pos[0], self.pos[1]), self.radius)
     
     def update(self):
         return

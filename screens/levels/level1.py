@@ -17,7 +17,7 @@ class Level1(AbstractLevel):
 
         self.entities = {
             "Celestial Bodies" : [
-                CelestialBody(x=600, y=200, radius=10, gravity=2500, gravity_radius=100)
+                CelestialBody(x=600, y=200, radius=48, gravity=2500, gravity_radius=100, planet=0)
             ],
             "Goals" : [
                 Goal(750, 200, 20)
