@@ -50,7 +50,7 @@ class AbstractBird():
         
     
     def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (self.pos[0], self.pos[1]), self.radius)
+        screen.blit(self.image, (self.pos[0], self.pos[1]))
     
     def shoot(self):
         d = pygame.mouse.get_pos() - self.pos

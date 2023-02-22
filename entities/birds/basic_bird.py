@@ -10,7 +10,7 @@ class BasicBird(AbstractBird):
         super().__init__(x, y, vx, vy, radius)
 
         self.name = self.BASIC_BIRD
-        self.color = (30, 200, 20)
+        self.image = pygame.image.load("basic_bird.png")
     
     def ability(self):
         self.vel = self.vel * 2

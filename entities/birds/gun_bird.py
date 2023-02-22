@@ -11,7 +11,7 @@ class GunBird(AbstractBird):
         super().__init__(x, y, vx, vy, radius)
 
         self.name = self.GUN_BIRD
-        self.color = (255, 255, 255)
+        self.image = pygame.image.load("gun_bird.png")
         self.bullet = Bullet(self.pos[0], self.pos[1], self.vel[0], self.vel[1], 2)
 
     def update(self):

@@ -10,7 +10,7 @@ class Bullet:
         self.radius = radius
         self.hit = False
 
-        self.color = (0, 255, 255)
+        self.image = pygame.image.load("bullet.png")
     
     def update(self):
         self.pos = self.pos + self.vel * 2
@@ -26,4 +26,4 @@ class Bullet:
         self.hit = True
     
     def draw(self, screen):
-        pygame.draw.circle(screen, self.color, (self.pos[0], self.pos[1]), self.radius)
+        screen.blit(self.image, (self.pos[0], self.pos[1]))

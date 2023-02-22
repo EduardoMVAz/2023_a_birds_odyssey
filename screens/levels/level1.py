@@ -2,15 +2,17 @@ from screens.abstract_level import AbstractLevel
 
 from entities.celestial import CelestialBody
 from entities.birds.basic_bird import BasicBird
+from entities.birds.redirect_bird import RedirectBird
+from entities.birds.gun_bird import GunBird
 from entities.goal import Goal
 
 class Level1(AbstractLevel):
 
     def __init__(self):
         self.birds = [
-            BasicBird(50, 200, 0, 0, 5),
-            BasicBird(50, 200, 0, 0, 5),
-            BasicBird(50, 200, 0, 0, 5)
+            BasicBird(50, 200, 0, 0, 7.5),
+            RedirectBird(50, 200, 0, 0, 7.5),
+            GunBird(50, 200, 0, 0, 7.5)
         ]
 
         self.entities = {
