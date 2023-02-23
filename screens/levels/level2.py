@@ -1,3 +1,5 @@
+import pygame
+
 from screens.abstract_level import AbstractLevel
 
 from entities.celestial import CelestialBody
@@ -23,8 +25,9 @@ class Level2(AbstractLevel):
             ]
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
-
+        self.image = pygame.image.load("SpaceBackground2.png")
         self.name = self.LEVEL2
         self.next_level = self.MAIN_MENU
+        self.perdeu = False
 
         self.current_bird = 0

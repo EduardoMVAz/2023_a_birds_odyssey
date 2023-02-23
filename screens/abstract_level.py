@@ -10,6 +10,7 @@ class AbstractLevel():
     MAIN_MENU = "MainMenu"
     LEVEL1 = "Level1"
     LEVEL2 = "Level2"
+    lost_rects = {"EXIT": pygame.Rect(229, 259, 130, 45), "TRY AGAIN": pygame.Rect(448, 259, 130, 45)}
 
     def update_bird_count(self):
         self.current_bird += 1
@@ -25,15 +26,23 @@ class AbstractLevel():
             if event.type == pygame.QUIT:
                 return "Quit"
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if self.birds[self.current_bird].has_shot == False:
+
+                if self.perdeu:
+                    p = pygame.mouse.get_pos()
+                    if self.lost_rects["TRY AGAIN"].collidepoint(p):
+                        self.reset()
+                    elif self.lost_rects["TRY AGAIN"].collidepoint(p):
+                        return self.MAIN_MENU
+                elif self.birds[self.current_bird].has_shot == False:
                     self.birds[self.current_bird].shoot()
                 elif self.birds[self.current_bird].used_ability == False:
                     self.birds[self.current_bird].ability()
+                
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
                     self.birds[self.current_bird].reset()
                     if self.update_bird_count():
-                        return "MainMenu"
+                        self.perdeu = True
         
         return self.update_entities()
 
@@ -43,40 +52,42 @@ class AbstractLevel():
             for e in group:
                 e.update()
         
-        self.birds[self.current_bird].update()
+        if not self.perdeu:
+            self.birds[self.current_bird].update()
 
-        for celestial_body in self.entities["Celestial Bodies"]:
-            if self.birds[self.current_bird].crash(celestial_body.gravity):
-                d = celestial_body.pos - self.birds[self.current_bird].pos
-                d1 = d/np.linalg.norm(d)
-                self.birds[self.current_bird].acc = d1 * celestial_body.gravity.gravity/np.linalg.norm(d)**2
-            
-            if self.birds[self.current_bird].crash(celestial_body):
-                self.birds[self.current_bird].reset()
-                if self.update_bird_count():
-                    return self.MAIN_MENU
+            for celestial_body in self.entities["Celestial Bodies"]:
+                if self.birds[self.current_bird].crash(celestial_body.gravity):
+                    d = celestial_body.pos - self.birds[self.current_bird].pos
+                    d1 = d/np.linalg.norm(d)
+                    self.birds[self.current_bird].acc = d1 * celestial_body.gravity.gravity/np.linalg.norm(d)**2
                 
-            if self.birds[self.current_bird].name == "GunBird":
-                if self.birds[self.current_bird].bullet.crash(celestial_body):
-                    self.birds[self.current_bird].bullet.reset()
-                    del self.entities["Celestial Bodies"][self.entities["Celestial Bodies"].index(celestial_body)]
+                if self.birds[self.current_bird].crash(celestial_body):
+                    self.birds[self.current_bird].reset()
+                    if self.update_bird_count():
+                        self.perdeu = True
+                    
+                if self.birds[self.current_bird].name == "GunBird":
+                    if self.birds[self.current_bird].bullet.crash(celestial_body):
+                        self.birds[self.current_bird].bullet.reset()
+                        del self.entities["Celestial Bodies"][self.entities["Celestial Bodies"].index(celestial_body)]
 
-        
-        for goals in self.entities["Goals"]:
-            if self.birds[self.current_bird].crash(goals):
-                self.birds[self.current_bird].reset()
-                return self.next_level
-        
-        if self.birds[self.current_bird].crash_wall():
-            if self.update_bird_count():
-                return self.MAIN_MENU
-        
+            
+            for goals in self.entities["Goals"]:
+                if self.birds[self.current_bird].crash(goals):
+                    self.birds[self.current_bird].reset()
+                    return self.next_level
+            
+            if self.birds[self.current_bird].crash_wall():
+                if self.update_bird_count():
+                    self.perdeu = True
+
         return self.name
 
     @abstractmethod
     def draw(self, screen):
         # Desenhar fundo        
         screen.fill(self.colors["BLACK"])
+        screen.blit(self.image, (0,0))
 
         # Desenhar personagem
         for group in self.entities.values():
@@ -86,6 +97,9 @@ class AbstractLevel():
         # Desenhar passáro
         if self.current_bird < len(self.birds):
             self.birds[self.current_bird].draw(screen)
+        
+        if self.perdeu:
+            screen.blit(pygame.image.load("GameOver.png"), (200, 125))
         
         # Update!
         pygame.display.update()

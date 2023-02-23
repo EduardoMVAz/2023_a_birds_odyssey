@@ -8,21 +8,24 @@ class MainMenu(AbstractLevel):
     def __init__(self):
         
         self.entities = {
-            "START": pygame.Rect(100, 50, 200, 75), 
-            "OPTIONS": pygame.Rect(100, 200, 200, 75), 
-            "CREDITS": pygame.Rect(100, 350, 200, 75)
+            "START": pygame.Rect(260, 225, 280, 125), 
+            "OPTIONS": pygame.Rect(260, 378, 120, 54), 
+            "CREDITS": pygame.Rect(419, 378, 120, 54)
         }
-        self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
+        self.meteor = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("comet.png")}
+        self.image = pygame.image.load("MainMenu.png")
 
         self.name = "MainMenu"
 
     def draw(self, screen):
 
-        screen.fill(self.colors["BLACK"])
-
-        pygame.draw.rect(screen, self.colors["RED"], self.entities["START"])
-        pygame.draw.rect(screen, self.colors["BLUE"], self.entities["OPTIONS"])
-        pygame.draw.rect(screen, self.colors["GREEN"], self.entities["CREDITS"])
+        screen.fill((0,0,0))
+        screen.blit(self.image, (0,0))
+        screen.blit(self.meteor["IMG"], self.meteor["POS"])
+        
+        self.meteor["POS"] += self.meteor["VEL"]
+        if self.meteor["POS"][1] < -100:
+            self.meteor["POS"] = self.meteor["POS_0"]
 
         pygame.display.update()
         
