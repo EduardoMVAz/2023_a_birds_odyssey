@@ -54,7 +54,7 @@ class AbstractBird():
     
     def shoot(self):
         d = pygame.mouse.get_pos() - self.pos
-        self.vel = d/np.linalg.norm(d) * 2
+        self.vel = d/120
 
         self.has_shot = True
 
