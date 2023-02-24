@@ -58,7 +58,9 @@ Além disso, cada um dos 3 pássaros possui uma habilidade específica que vai t
 
 * **Gun Bird** - ao clicar, atira um projétil na direção do mouse do jogador que pode destruir obstáculos para abrir o caminho
 
-Por fim, o número de pássaros em cada nível é limitado. Caso eles terminem, você pode tentar novamente ou desistir (covarde!).
+Por fim, o número de pássaros em cada nível é limitado. Caso eles terminem, você pode tentar novamente ou desistir (covarde!). **Have fun!**
+
+![GIF de 2023: A Bird's Odysse]()
 
 
 ---
