@@ -16,7 +16,8 @@ class Game():
 
     def __init__(self):
         
-        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        self.screen = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
 
         self.telas = {
