@@ -60,7 +60,7 @@ Além disso, cada um dos 3 pássaros possui uma habilidade específica que vai t
 
 Por fim, o número de pássaros em cada nível é limitado. Caso eles terminem, você pode tentar novamente ou desistir (covarde!). **Have fun!**
 
-![Demo de 2023: A Bird's Odyssey](https://youtu.be/-pbsZSI-M84)
+[Demo de 2023: A Bird's Odyssey](https://youtu.be/-pbsZSI-M84)
  
 ---
 
