@@ -42,7 +42,7 @@ class MainMenu(AbstractLevel):
         if self.entities["START"].collidepoint(p):
             return "Level1"
         elif self.entities["OPTIONS"].collidepoint(p):
-            return "placeholder_options"
+            return "Quit"
         elif self.entities["CREDITS"].collidepoint(p):
             return "Credits"
         return self.name

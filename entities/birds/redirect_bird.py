@@ -14,5 +14,5 @@ class RedirectBird(AbstractBird):
     
     def ability(self):
         d = pygame.mouse.get_pos() - self.pos
-        self.vel = d/np.linalg.norm(d) * 2
+        self.vel = d/np.linalg.norm(d) * 2.4
         self.used_ability = True
