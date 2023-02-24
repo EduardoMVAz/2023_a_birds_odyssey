@@ -13,6 +13,8 @@ class Level3(AbstractLevel):
         self.birds = [
             BasicBird(50, 400, 0, 0, 8),
             RedirectBird(50, 400, 0, 0, 8),
+            BasicBird(50, 400, 0, 0, 8),
+            RedirectBird(50, 400, 0, 0, 8)
         ]
 
         self.entities = {

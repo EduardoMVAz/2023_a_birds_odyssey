@@ -13,8 +13,8 @@ class Level1(AbstractLevel):
     def __init__(self):
         self.birds = [
             BasicBird(50, 200, 0, 0, 8),
-            RedirectBird(50, 200, 0, 0, 8),
-            GunBird(50, 200, 0, 0, 8)
+            BasicBird(50, 200, 0, 0, 8),
+            BasicBird(50, 200, 0, 0, 8)
         ]
 
         self.entities = {
