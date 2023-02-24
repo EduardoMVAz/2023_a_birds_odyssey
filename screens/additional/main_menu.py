@@ -9,10 +9,10 @@ class MainMenu(AbstractLevel):
         
         self.entities = {
             "START": pygame.Rect(260, 225, 280, 125), 
-            "OPTIONS": pygame.Rect(260, 378, 120, 54), 
-            "CREDITS": pygame.Rect(419, 378, 120, 54)
+            "CREDITS": pygame.Rect(260, 378, 120, 54), 
+            "OPTIONS": pygame.Rect(419, 378, 120, 54)
         }
-        self.meteor = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("comet.png")}
+        self.comet = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("comet.png")}
         self.image = pygame.image.load("MainMenu.png")
 
         self.name = "MainMenu"
@@ -21,11 +21,11 @@ class MainMenu(AbstractLevel):
 
         screen.fill((0,0,0))
         screen.blit(self.image, (0,0))
-        screen.blit(self.meteor["IMG"], self.meteor["POS"])
+        screen.blit(self.comet["IMG"], self.comet["POS"])
         
-        self.meteor["POS"] += self.meteor["VEL"]
-        if self.meteor["POS"][1] < -100:
-            self.meteor["POS"] = self.meteor["POS_0"]
+        self.comet["POS"] += self.comet["VEL"]
+        if self.comet["POS"][1] < -100:
+            self.comet["POS"] = self.comet["POS_0"]
 
         pygame.display.update()
         
@@ -44,6 +44,6 @@ class MainMenu(AbstractLevel):
         elif self.entities["OPTIONS"].collidepoint(p):
             return "placeholder_options"
         elif self.entities["CREDITS"].collidepoint(p):
-            return "placeholder_credits"
+            return "Credits"
         return self.name
 
