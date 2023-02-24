@@ -13,6 +13,7 @@ class AbstractLevel():
     LEVEL3 = "Level3"
     LEVEL4 = "Level4"
     LEVEL5 = "Level5"
+    CREDITS = "Credits"
     lost_rects = {"EXIT": pygame.Rect(229, 259, 130, 45), "TRY AGAIN": pygame.Rect(448, 259, 130, 45)}
 
     def update_bird_count(self):
@@ -84,6 +85,19 @@ class AbstractLevel():
                     if self.update_bird_count():
                         self.perdeu = True
                         break
+
+            if not self.perdeu:
+                for meteor in self.entities["Meteors"]:
+                    if self.birds[self.current_bird].name == "GunBird":
+                        if self.birds[self.current_bird].bullet.crash(meteor):
+                            self.birds[self.current_bird].bullet.reset()
+                            del self.entities["Meteors"][self.entities["Meteors"].index(meteor)]
+
+                    if self.birds[self.current_bird].crash(meteor):
+                        self.birds[self.current_bird].reset()
+                        if self.update_bird_count():
+                            self.perdeu = True
+                            break
 
         return self.name
 

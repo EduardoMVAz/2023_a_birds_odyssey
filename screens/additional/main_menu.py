@@ -40,7 +40,7 @@ class MainMenu(AbstractLevel):
     def update_entities(self):
         p = pygame.mouse.get_pos()
         if self.entities["START"].collidepoint(p):
-            return "Level1"
+            return "Level1+"
         elif self.entities["OPTIONS"].collidepoint(p):
             return "placeholder_options"
         elif self.entities["CREDITS"].collidepoint(p):

@@ -3,6 +3,8 @@ import pygame
 from screens.abstract_level import AbstractLevel
 
 from entities.celestial import CelestialBody
+from entities.meteor import Meteor
+
 from entities.birds.basic_bird import BasicBird
 from entities.birds.redirect_bird import RedirectBird
 from entities.goal import Goal
@@ -11,8 +13,9 @@ class Level4(AbstractLevel):
 
     def __init__(self):
         self.birds = [
-            BasicBird(50, 380, 0, 0, 5),
-            RedirectBird(50, 380, 0, 0, 5),
+            RedirectBird(50, 380, 0, 0, 8),
+            RedirectBird(50, 380, 0, 0, 8),
+            RedirectBird(50, 380, 0, 0, 8)
         ]
 
         self.entities = {
@@ -21,6 +24,11 @@ class Level4(AbstractLevel):
             ],
             "Goals" : [
                 Goal(750, 380, 20)
+            ],
+            "Meteors": [
+                Meteor(x=500, y=310, radius=50),
+                Meteor(x=600, y=390, radius=50),
+                Meteor(x=700, y=200, radius=50),
             ]
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
