@@ -72,6 +72,7 @@ O modelo físico de 2023: A Birds Odyssey é formado a partir do uso de vetores.
 * As posições e velocidades (vetores) são, portanto, atualizadas da seguinte maneira:
 
 $S_n = S_{n-1} + V_n * k$
+
 $V_n = V_{n-1} + A_n$
 
 *obs: $k$ é uma constante de regulagem utilizada quando necessário para ajuste do incremento da velocidade.*
@@ -79,6 +80,7 @@ $V_n = V_{n-1} + A_n$
 * No momento do disparo, o vetor de velocidade do pássaro é recalculado da seguinte maneira:
 
 `d = pygame.mouse.get_pos() - self.pos`
+
 `self.vel = d/120`
 
 1. d é o vetor calculado pela subtração entre o vetor de posição do mouse e do `self.pos`, a posição do pássaro. Assim, temos a direção do disparo.
@@ -90,16 +92,18 @@ Assim, ele passa a percorrer um movimento uniforme no espaço.
 * Ao colidir com a órbita de um planeta, o pássaro começa a sofrer efeito de uma aceleração da gravidade calculada pela fórmula:
 
 `d = celestial_body.pos - self.birds[self.current_bird].pos`
+
 `d1 = d/np.linalg.norm(d)`
+
 `self.birds[self.current_bird].acc = d1 * celestial_body.gravity.gravity/np.linalg.norm(d)**2`
 
 1. d é o vetor calculado pela subtração entre o vetor de posição do mouse e da posição do corpo celeste que atrai o pássaro. Assim, temos a direção da atração da gravidade.
 
 2. O vetor é então normalizado, ao dividirmos ele por sua norma.
 
-3. Por fim, a aceleração do pássaro em movimento é definida pela multiplicação do vetor calculado anteriormente pelo escalar calculado pelo quociente da constante gravitacional do objeto (definida na sua instanciação) pelo quadrado da distância entre o pássaro e o corpo.
+3. Por fim, a aceleração do pássaro em movimento é definida pela multiplicação do vetor calculado anteriormente pelo escalar calculado pelo quociente da constante gravitacional do objeto pelo quadrado da distância entre o pássaro e o corpo.
 
-Portanto, enquanto em órbita, percorre movimento uniformemente variado. `g` é uma constante fornecida na instanciação do objeto, que regula a intensidade da força gravitacional para cada nível ser o mais equilibrado possível.
+Portanto, enquanto em órbita, percorre movimento uniformemente variado. A constante `gravity` é fornecida na instanciação do objeto, e regula a intensidade da força gravitacional para cada nível ser o mais equilibrado possível.
 
 * Ao sair de órbita, o pássaro perde sua aceleração e então volta a percorrer movimento uniforme no espaço de acordo com a velocidade de quando escapou pela tangente.
 
