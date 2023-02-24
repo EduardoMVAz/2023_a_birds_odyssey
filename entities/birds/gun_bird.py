@@ -14,6 +14,8 @@ class GunBird(AbstractBird):
         self.image = pygame.image.load("gun_bird.png")
         self.bullet = Bullet(self.pos[0], self.pos[1], self.vel[0], self.vel[1], 2)
 
+        self.shoot_sound = pygame.mixer.Sound("audios/shot_bullet.wav")
+
     def update(self):
         super().update()
         self.bullet.update()
@@ -28,3 +30,5 @@ class GunBird(AbstractBird):
         d = pygame.mouse.get_pos() - self.bullet.pos
         self.bullet.vel = d/80
         self.used_ability = True
+
+        self.shoot_sound.play()

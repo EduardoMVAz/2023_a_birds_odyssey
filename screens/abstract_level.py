@@ -16,6 +16,7 @@ class AbstractLevel():
     CREDITS = "Credits"
     lost_rects = {"EXIT": pygame.Rect(229, 259, 130, 45), "TRY AGAIN": pygame.Rect(448, 259, 130, 45)}
 
+
     def update_bird_count(self):
         self.current_bird += 1
         return self.current_bird == len(self.birds)    
@@ -58,6 +59,7 @@ class AbstractLevel():
         
         if not self.perdeu:
             if self.birds[self.current_bird].crash_wall():
+                self.hit_sound.play()
                 if self.update_bird_count():
                     self.perdeu = True
 
@@ -66,6 +68,7 @@ class AbstractLevel():
 
             for goals in self.entities["Goals"]:
                 if self.birds[self.current_bird].crash(goals):
+                    self.complete_sound.play()
                     self.birds[self.current_bird].reset()
                     return self.next_level
 
@@ -81,6 +84,8 @@ class AbstractLevel():
                         del self.entities["Celestial Bodies"][self.entities["Celestial Bodies"].index(celestial_body)]
                 
                 if self.birds[self.current_bird].crash(celestial_body):
+                    self.hit_sound.play()
+
                     self.birds[self.current_bird].reset()
                     if self.update_bird_count():
                         self.perdeu = True
@@ -94,6 +99,8 @@ class AbstractLevel():
                             del self.entities["Meteors"][self.entities["Meteors"].index(meteor)]
 
                     if self.birds[self.current_bird].crash(meteor):
+                        self.hit_sound.play()
+                        
                         self.birds[self.current_bird].reset()
                         if self.update_bird_count():
                             self.perdeu = True

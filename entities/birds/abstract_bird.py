@@ -23,6 +23,8 @@ class AbstractBird():
         self.used_ability = False
         self.has_shot = False
 
+        self.shoot_sound = pygame.mixer.Sound("audios/shot_bird.wav")
+
     def update(self):
         self.vel = self.vel + self.acc * 0.1
         self.pos = self.pos + self.vel
@@ -57,6 +59,8 @@ class AbstractBird():
         self.vel = d/120
 
         self.has_shot = True
+
+        self.shoot_sound.play()
 
     @abstractmethod
     def ability(self):

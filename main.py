@@ -36,6 +36,17 @@ class Game():
 
 
     def play(self):
+
+        # Initialize Pygame mixer
+        pygame.mixer.init()
+
+        # Load the soundtrack
+        pygame.mixer.music.load("audios/possible_soundtrack.mp3")
+
+        # Set the soundtrack to loop indefinitely
+        pygame.mixer.music.set_volume(0.7) # Set the volume to 50% (optional)
+        pygame.mixer.music.play(loops=-1)
+
         
         tela = self.telas["MainMenu"]
 

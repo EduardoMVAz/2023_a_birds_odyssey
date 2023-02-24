@@ -39,3 +39,6 @@ class Level4(AbstractLevel):
         self.perdeu = False
 
         self.current_bird = 0
+
+        self.hit_sound = pygame.mixer.Sound("audios/hit_something.wav")
+        self.complete_sound = pygame.mixer.Sound("audios/level_complete.wav")
