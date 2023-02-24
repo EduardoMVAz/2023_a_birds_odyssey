@@ -2,6 +2,7 @@ import pygame
 import numpy as np
 
 from screens.additional.main_menu import MainMenu
+from screens.additional.credits import Credits
 from screens.levels.level1 import Level1
 from screens.levels.level2 import Level2
 
@@ -24,6 +25,7 @@ class Game():
             "MainMenu" : MainMenu(),
             "Level1" : Level1(),
             "Level2" : Level2(),
+            "Credits": Credits()
         }
 
 
