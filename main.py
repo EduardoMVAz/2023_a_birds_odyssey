@@ -4,6 +4,9 @@ import numpy as np
 from screens.additional.main_menu import MainMenu
 from screens.levels.level1 import Level1
 from screens.levels.level2 import Level2
+from screens.levels.level3 import Level3
+from screens.levels.level4 import Level4
+from screens.levels.level5 import Level5
 
 pygame.init()
 
@@ -24,6 +27,9 @@ class Game():
             "MainMenu" : MainMenu(),
             "Level1" : Level1(),
             "Level2" : Level2(),
+            "Level3" : Level3(),
+            "Level4" : Level4(),
+            "Level5" : Level5()
         }
 
 

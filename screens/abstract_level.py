@@ -10,6 +10,9 @@ class AbstractLevel():
     MAIN_MENU = "MainMenu"
     LEVEL1 = "Level1"
     LEVEL2 = "Level2"
+    LEVEL3 = "Level3"
+    LEVEL4 = "Level4"
+    LEVEL5 = "Level5"
     lost_rects = {"EXIT": pygame.Rect(229, 259, 130, 45), "TRY AGAIN": pygame.Rect(448, 259, 130, 45)}
 
     def update_bird_count(self):
@@ -31,7 +34,7 @@ class AbstractLevel():
                     p = pygame.mouse.get_pos()
                     if self.lost_rects["TRY AGAIN"].collidepoint(p):
                         self.reset()
-                    elif self.lost_rects["TRY AGAIN"].collidepoint(p):
+                    elif self.lost_rects["EXIT"].collidepoint(p):
                         return self.MAIN_MENU
                 elif self.birds[self.current_bird].has_shot == False:
                     self.birds[self.current_bird].shoot()
