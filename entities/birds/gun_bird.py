@@ -26,5 +26,5 @@ class GunBird(AbstractBird):
     def ability(self):
         self.bullet.pos = self.pos
         d = pygame.mouse.get_pos() - self.bullet.pos
-        self.bullet.vel = d/np.linalg.norm(d) * 2
+        self.bullet.vel = d/80
         self.used_ability = True
