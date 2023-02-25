@@ -11,7 +11,7 @@ class GunBird(AbstractBird):
         super().__init__(x, y, vx, vy, radius)
 
         self.name = self.GUN_BIRD
-        self.image = pygame.image.load("gun_bird.png")
+        self.image = pygame.image.load("assets/gun_bird.png")
         self.bullet = Bullet(self.pos[0], self.pos[1], self.vel[0], self.vel[1], 2)
 
         self.shoot_sound = pygame.mixer.Sound("audios/shot_bullet.wav")

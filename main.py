@@ -1,5 +1,4 @@
 import pygame
-import numpy as np
 
 from screens.additional.main_menu import MainMenu
 from screens.additional.credits import Credits
@@ -37,14 +36,14 @@ class Game():
 
     def play(self):
 
-        # Initialize Pygame mixer
+        # Inicializa o Mixer
         pygame.mixer.init()
 
-        # Load the soundtrack
+        # Carrega a Soundtrack
         pygame.mixer.music.load("audios/possible_soundtrack.mp3")
 
-        # Set the soundtrack to loop indefinitely
-        pygame.mixer.music.set_volume(0.7) # Set the volume to 50% (optional)
+        # Loop da soundtrack
+        pygame.mixer.music.set_volume(0.7) # Volume
         pygame.mixer.music.play(loops=-1)
 
         

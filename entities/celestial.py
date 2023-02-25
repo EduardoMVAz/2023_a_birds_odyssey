@@ -7,7 +7,7 @@ class CelestialBody:
         self.vel = np.array([0, 0])
         self.acc = np.array([0, 0])
         self.radius = radius
-        self.planets = [pygame.image.load("planet_1.png"), pygame.image.load("planet_2.png"), pygame.image.load("planet_3.png"), pygame.image.load("planet_4.png")]
+        self.planets = [pygame.image.load("assets/planet_1.png"), pygame.image.load("assets/planet_2.png"), pygame.image.load("assets/planet_3.png"), pygame.image.load("assets/planet_4.png")]
         self.planet = planet
         self.gravity = Gravity(x, y, gravity, gravity_radius)
 

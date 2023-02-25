@@ -10,7 +10,7 @@ class Bullet:
         self.radius = radius
         self.hit = False
 
-        self.image = pygame.image.load("bullet.png")
+        self.image = pygame.image.load("assets/bullet.png")
     
     def update(self):
         self.pos = self.pos + self.vel * 2

@@ -128,7 +128,7 @@ class AbstractLevel():
         
         
         if self.perdeu:
-            screen.blit(pygame.image.load("GameOver.png"), (200, 125))
+            screen.blit(pygame.image.load("assets/GameOver.png"), (200, 125))
             
         # Update!
         pygame.display.update()

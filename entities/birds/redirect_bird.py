@@ -10,7 +10,7 @@ class RedirectBird(AbstractBird):
         super().__init__(x, y, vx, vy, radius)
 
         self.name = self.REDIRECT_BIRD
-        self.image = pygame.image.load("redirect_bird.png")
+        self.image = pygame.image.load("assets/redirect_bird.png")
     
     def ability(self):
         d = pygame.mouse.get_pos() - self.pos

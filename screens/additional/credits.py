@@ -1,5 +1,4 @@
 import pygame
-import numpy as np
 
 class Credits:
 
@@ -8,7 +7,7 @@ class Credits:
         self.entities = {
             "BACK": pygame.Rect(19, 368, 135, 60)
         }
-        self.image = pygame.image.load("Ending.png")
+        self.image = pygame.image.load("assets/Ending.png")
         self.name = "Credits"
 
     def reset(self):

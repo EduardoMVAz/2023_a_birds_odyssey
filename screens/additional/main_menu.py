@@ -12,8 +12,8 @@ class MainMenu(AbstractLevel):
             "CREDITS": pygame.Rect(260, 378, 120, 54), 
             "OPTIONS": pygame.Rect(419, 378, 120, 54)
         }
-        self.comet = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("comet.png")}
-        self.image = pygame.image.load("MainMenu.png")
+        self.comet = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("assets/comet.png")}
+        self.image = pygame.image.load("assets/MainMenu.png")
 
         self.name = "MainMenu"
 
@@ -40,7 +40,7 @@ class MainMenu(AbstractLevel):
     def update_entities(self):
         p = pygame.mouse.get_pos()
         if self.entities["START"].collidepoint(p):
-            return "Level1"
+            return self.LEVEL1
         elif self.entities["OPTIONS"].collidepoint(p):
             return "Quit"
         elif self.entities["CREDITS"].collidepoint(p):

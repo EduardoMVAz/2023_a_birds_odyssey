@@ -4,7 +4,6 @@ from screens.abstract_level import AbstractLevel
 
 from entities.celestial import CelestialBody
 from entities.meteor import Meteor
-
 from entities.birds.gun_bird import GunBird
 from entities.birds.redirect_bird import RedirectBird
 from entities.goal import Goal
@@ -33,7 +32,7 @@ class Level4(AbstractLevel):
             ]
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
-        self.image = pygame.image.load("SpaceBackground1.png")
+        self.image = pygame.image.load("assets/SpaceBackground1.png")
         self.name = self.LEVEL4
         self.next_level = self.LEVEL5
         self.perdeu = False

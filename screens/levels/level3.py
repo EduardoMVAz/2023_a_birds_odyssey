@@ -28,7 +28,7 @@ class Level3(AbstractLevel):
             "Meteors": []
         }
         self.colors = {"RED": (255, 0, 0), "GREEN": (0, 255, 0), "BLUE": (0, 0, 255), "BLACK": (0, 0, 0), "WHITE": (255, 255, 255)}
-        self.image = pygame.image.load("SpaceBackground1.png")
+        self.image = pygame.image.load("assets/SpaceBackground1.png")
         self.name = self.LEVEL3
         self.next_level = self.LEVEL4
         self.perdeu = False
