@@ -38,7 +38,7 @@ Para jogar 2023: A Birds Odyssey, você deve ter Python instalado no seu computa
 
 Agora você pode começar a sua aventura! Você deve estar vendo o seguinte menu:
 
-![Menu do jogo](MainMenu.png)
+![Menu do jogo](assets/MainMenu.png)
 
 ---
 
