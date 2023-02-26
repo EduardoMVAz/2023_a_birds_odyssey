@@ -11,8 +11,11 @@ class RedirectBird(AbstractBird):
 
         self.name = self.REDIRECT_BIRD
         self.image = pygame.image.load("assets/redirect_bird.png")
+        self.ability_sound = pygame.mixer.Sound("audios/redirect_bird_ability.wav")
     
     def ability(self):
         d = pygame.mouse.get_pos() - self.pos
         self.vel = d/np.linalg.norm(d) * 2.4
         self.used_ability = True
+
+        self.ability_sound.play()
