@@ -11,6 +11,12 @@ from screens.levels.level5 import Level5
 pygame.init()
 
 class Game():
+
+    '''
+    A classe Game é a principal classe do jogo, e representa o loop principal. Ela funciona baseado em nomes de telas,
+    trocando entre as telas do dicionário "telas" e executando de forma genérica as funções de cada tela.
+    '''
+
     # Tamanho da tela e definição do FPS
     WIDTH = 800
     HEIGHT = 450
@@ -23,6 +29,7 @@ class Game():
         self.screen = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
 
+        # Dicionário com as telas do jogo
         self.telas = {
             "MainMenu" : MainMenu(),
             "Level1" : Level1(),
@@ -46,11 +53,21 @@ class Game():
         pygame.mixer.music.set_volume(0.7) # Volume
         pygame.mixer.music.play(loops=-1)
 
-        
+        # Define a primeira tela
         tela = self.telas["MainMenu"]
 
+        # Inicia O loop principal
         rodando = True
         while rodando:
+
+            '''
+            O loop inicia rodando a função process_events de cada tela, que realiza toda checagem da tela. Dentro da fase,
+            a função chama update_entites, que determina se a fase acabou ou não.
+            Quando uma fase acaba, seja perdendo ou ganhando, a classe da fase retorna ao loop principal o nome da próxima tela,
+            e o loop atualiza a variável "tela" selecionando a chave no dicionário utilizando o nome retornado.
+            Quando o jogo acaba, o loop principal se encerra e o jogo fecha.
+            '''
+
             # Capturar eventos
             strtela = tela.process_events()
 

@@ -2,6 +2,8 @@ from abc import abstractmethod
 import pygame
 import numpy as np
 
+# As fases principais são todas heranças da classe AbstractLevel, portanto todo procedimento genérico é realizado nessa classe.
+
 class AbstractLevel():
 
     WIDTH = 800
@@ -18,15 +20,19 @@ class AbstractLevel():
 
 
     def update_bird_count(self):
+        # A função update_bird_count aumenta o contador current_bird, informando que ouve uma troca de pássaros.
         self.current_bird += 1
         return self.current_bird == len(self.birds)    
 
     @abstractmethod
     def reset(self):
+        # função para resetar a fase.
         self.__init__()
 
     @abstractmethod
     def process_events(self):
+        # A função process_events verifica os eventos do pygame, fazendo as checagens necessárias do tiro e da abilidade dos
+        # pássaros, de acordo com clicks do mouse.
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return "Quit"
@@ -53,6 +59,10 @@ class AbstractLevel():
 
     @abstractmethod
     def update_entities(self):
+        '''
+        A função update entities faz todos os processos da fase, verificando as interações entre objetos,
+        e atualizando o estado do jogo. É nela que verificamos se o jogador ganhou a fase ou perdeu.
+        '''
         for group in self.entities.values():
             for e in group:
                 e.update()
@@ -110,6 +120,9 @@ class AbstractLevel():
 
     @abstractmethod
     def draw(self, screen):
+        '''
+        A função draw desenha todos os elementos na tela e atualiza o display.
+        '''
         # Desenhar fundo        
         screen.fill(self.colors["BLACK"])
         screen.blit(self.image, (0,0))
@@ -135,6 +148,10 @@ class AbstractLevel():
 
     
     def draw_line_dashed(self, surface, color, start_pos, end_pos, width = 1, dash_length = 10, exclude_corners = True):
+        '''
+        A função draw_line_dashed desenha uma linha pontilhada que auxilia o jogador na hora de atirar o pássaro,
+        mostrando o sentido do tiro.
+        '''
 
         # convert tuples to numpy arrays
         start_pos = np.array(start_pos)

@@ -3,6 +3,10 @@ import pygame
 
 class Bullet:
 
+    '''
+    A classe Bullet é o projétil disparado pelo GunBird.
+    '''
+
     def __init__(self, x, y, vx, vy, radius):
         self.s0 = np.array([x, y])
         self.pos = np.array([x, y])

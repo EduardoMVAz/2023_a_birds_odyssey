@@ -2,6 +2,9 @@ import numpy as np
 import pygame
 
 class Goal:
+    '''
+    A classe Goal é uma classe simples, sendo o objeto que deve ser acertado pelo jogador com o pássaro.
+    '''
     def __init__(self, x, y, radius):
         self.pos = np.array([x,y])
         self.radius = radius

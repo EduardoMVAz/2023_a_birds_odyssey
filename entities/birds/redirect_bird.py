@@ -14,6 +14,9 @@ class RedirectBird(AbstractBird):
         self.ability_sound = pygame.mixer.Sound("audios/redirect_bird_ability.wav")
     
     def ability(self):
+        '''
+        A habilidade do pássaro redirecionado é realizar um segundo disparo, alterando seu sentido completamente.
+        '''
         d = pygame.mouse.get_pos() - self.pos
         self.vel = d/np.linalg.norm(d) * 2.4
         self.used_ability = True

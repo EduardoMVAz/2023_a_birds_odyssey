@@ -26,6 +26,9 @@ class GunBird(AbstractBird):
             self.bullet.draw(screen)
 
     def ability(self):
+        '''
+        A habilidade do pássaro da arma é atirar uma bala que destrói obstáculos.
+        '''
         self.bullet.pos = self.pos
         d = pygame.mouse.get_pos() - self.bullet.pos
         self.bullet.vel = d/80

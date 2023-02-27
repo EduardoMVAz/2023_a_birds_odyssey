@@ -4,13 +4,18 @@ import numpy as np
 from screens.abstract_level import AbstractLevel
 
 class MainMenu(AbstractLevel):
+    '''
+    A tela MainMenu é muito mais simples que as fases em sí, portanto seu código não herda de AbstractLevel,
+    em vez disso, ele é todo único. As únicas verificações necessárias são de elementos visuais (cometa) e 
+    os botões de START, CREDITS e EXIT.
+    '''
 
     def __init__(self):
         
         self.entities = {
             "START": pygame.Rect(260, 225, 280, 125), 
             "CREDITS": pygame.Rect(260, 378, 120, 54), 
-            "OPTIONS": pygame.Rect(419, 378, 120, 54)
+            "EXIT": pygame.Rect(419, 378, 120, 54)
         }
         self.comet = {"POS_0": np.array([-10, 225]), "POS": np.array([-10, 225]), "VEL": np.array([5,-5]), "IMG": pygame.image.load("assets/comet.png")}
         self.image = pygame.image.load("assets/MainMenu.png")
@@ -41,7 +46,7 @@ class MainMenu(AbstractLevel):
         p = pygame.mouse.get_pos()
         if self.entities["START"].collidepoint(p):
             return self.LEVEL1
-        elif self.entities["OPTIONS"].collidepoint(p):
+        elif self.entities["EXIT"].collidepoint(p):
             return "Quit"
         elif self.entities["CREDITS"].collidepoint(p):
             return "Credits"

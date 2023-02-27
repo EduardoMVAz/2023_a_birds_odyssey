@@ -2,6 +2,11 @@ import pygame
 
 class Credits:
 
+    '''
+    A tela Credits é ainda mais simples do que MainMenu, somente mostrando os devs do jogo (eu e o joão) e
+    verificando o botão de voltar ao menu principal.
+    '''
+
     def __init__(self):
         
         self.entities = {

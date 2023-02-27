@@ -14,6 +14,9 @@ class BasicBird(AbstractBird):
         self.ability_sound = pygame.mixer.Sound("audios/basic_bird_ability.wav")
     
     def ability(self):
+        '''
+        A habilidade do pássaro básico é duplicar sua velocidade.
+        '''
         self.vel = self.vel * 2
         self.acc = 0
         self.used_ability = True
