@@ -44,7 +44,7 @@ Agora você pode começar a sua aventura! Você deve estar vendo o seguinte menu
 
 ## How to play
 
-2023: A Birds Odyssey é dividido em 6 níveis, cada um necessitando de manipulações específicas da gravidade dos planetas para alcançar um objetivo, representado pela cor **AZUL**.
+2023: A Birds Odyssey é dividido em 5 níveis, cada um necessitando de manipulações específicas da gravidade dos planetas para alcançar um objetivo, representado pela cor **AZUL**.
 
 Para utilizar os pássaros disponíveis na fase, o jogador deve utilizar o mouse para mirar a direção do disparo e o módulo da velocidade. O pontilhado na tela indica a direção. Enquanto isso, a distância do mouse do passáro indica a velocidade: quanto mais distante, mais forte o disparo.
 
